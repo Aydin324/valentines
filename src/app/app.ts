@@ -9,7 +9,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   proposalState = signal<'intro' | 'proposal' | 'accepted'>('intro');
-  //noButtonPosition = signal({ x: 0, y: 0 });
 
   proceed() {
     if (this.proposalState() === 'intro') {
@@ -22,8 +21,15 @@ export class App {
   }
 
   moveNoButton() {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    //this.noButtonPosition.set({ x, y });
+    const noButton = document.getElementById('no');
+    if (noButton) {
+      const buttonWidth = noButton.offsetWidth;
+      const buttonHeight = noButton.offsetHeight;
+      const x = Math.random() * Math.max(0, window.innerWidth - buttonWidth);
+      const y = Math.random() * Math.max(0, window.innerHeight - buttonHeight);
+      noButton.style.position = 'fixed';
+      noButton.style.left = `${x}px`;
+      noButton.style.top = `${y}px`;
+    }
   }
 }
