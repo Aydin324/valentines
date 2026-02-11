@@ -1,0 +1,96 @@
+:host,
+main {
+  margin: 0;
+  height: 100vh;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  background-color: #fff0f3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.btn-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+button {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.btn-yes {
+  background-color: #ff4d6d;
+  color: white;
+  font-size: 1.5rem;
+}
+.btn-no {
+  background-color: #adb5bd;
+  color: white;
+  transition: all 0.1s ease;
+}
+
+.fade-in-section {
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.typing-effect {
+  display: inline-block;
+  overflow: hidden; // Ensures the text isn't revealed until the animation runs
+  border-right: 0.15em solid #ff4d6d; // The "cursor"
+  white-space: nowrap; // Keeps the text on one line
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+
+  // The animation:
+  // 'typing' expands the width
+  // 'blink-caret' makes the cursor flash
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #ff4d6d;
+  }
+}
