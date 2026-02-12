@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import confetti from 'canvas-confetti';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,12 @@ export class App {
       this.proposalState.set('proposal');
     } else if (this.proposalState() === 'proposal') {
       this.proposalState.set('accepted');
+      confetti({
+        particleCount: 250,
+        spread: 90,
+        origin: { y: 0.8 },
+        colors: ['#ff4d6d', '#ff758f', '#ffb3c1'],
+      });
     } else {
       this.proposalState.set('intro');
     }
