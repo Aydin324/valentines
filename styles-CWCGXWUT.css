@@ -1,0 +1,1 @@
+:root{--vh: 1vh;--safe-bottom: env(safe-area-inset-bottom, 0px)}html,body{margin:0;padding:0;height:100%}app-root,main{min-height:calc(var(--vh, 1vh) * 100)}button{-webkit-tap-highlight-color:transparent}button:focus{outline:none}footer.footer{padding-bottom:var(--safe-bottom)}
