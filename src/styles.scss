@@ -6,3 +6,10 @@ main {
   padding: 0;
   height: 100vh;
 }
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  &:focus {
+    outline: none;
+  }
+}

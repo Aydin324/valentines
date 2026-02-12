@@ -11,10 +11,13 @@ import confetti from 'canvas-confetti';
 export class App {
   proposalState = signal<'intro' | 'proposal' | 'accepted'>('intro');
   noClicked: number = 0;
+  yesButtonBlocked = signal(false);
 
   proceed() {
     if (this.proposalState() === 'intro') {
       this.proposalState.set('proposal');
+      this.yesButtonBlocked.set(true);
+      setTimeout(() => this.yesButtonBlocked.set(false), 500);
     } else if (this.proposalState() === 'proposal') {
       this.proposalState.set('accepted');
       confetti({
@@ -82,6 +85,8 @@ export class App {
   }
 
   handleNoButtonClick(): void {
+    this.yesButtonBlocked.set(true);
+    setTimeout(() => this.yesButtonBlocked.set(false), 500);
     this.noClicked++;
     console.log('No button clicked', this.noClicked, 'times');
     this.moveNoButton();

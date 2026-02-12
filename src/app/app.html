@@ -10,7 +10,7 @@
       <h2>Hoćeš li mi biti date za Valentinovo? 🫠</h2>
 
       <div class="btn-group">
-        <button (click)="proceed()" class="btn-yes">DA!</button>
+        <button (click)="!yesButtonBlocked() && proceed()" class="btn-yes">DA!</button>
 
         <button
           (mouseenter)="moveNoButton()"
