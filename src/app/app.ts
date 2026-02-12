@@ -42,19 +42,35 @@ export class App {
       const maxAttempts = 10;
 
       const questionBounds = questionSection?.getBoundingClientRect();
+      const footer = document.querySelector('footer');
+      const footerBounds = footer?.getBoundingClientRect();
+      const margin = 20;
 
       while (!validPosition && attempts < maxAttempts) {
         x = Math.random() * Math.max(0, window.innerWidth - buttonWidth);
         y = Math.random() * Math.max(0, window.innerHeight - buttonHeight);
 
-        const buttonBottom = y + buttonHeight;
+        const buttonLeft = x;
+        const buttonRight = x + buttonWidth;
         const buttonTop = y;
+        const buttonBottom = y + buttonHeight;
 
-        if (questionBounds) {
-          if (buttonBottom < questionBounds.top - 20 || buttonTop > questionBounds.bottom + 20) {
-            validPosition = true;
-          }
-        } else validPosition = true;
+        const overlaps = (rect: DOMRect | undefined) => {
+          if (!rect) return false;
+          return !(
+            buttonRight < rect.left - margin ||
+            buttonLeft > rect.right + margin ||
+            buttonBottom < rect.top - margin ||
+            buttonTop > rect.bottom + margin
+          );
+        };
+
+        if (
+          !(questionBounds && overlaps(questionBounds)) &&
+          !(footerBounds && overlaps(footerBounds))
+        ) {
+          validPosition = true;
+        }
 
         attempts++;
       }
