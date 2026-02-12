@@ -1,10 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --vh: 1vh; //fallback
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 html,
-body,
-main {
+body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
+}
+
+app-root,
+main {
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 button {
@@ -12,4 +21,8 @@ button {
   &:focus {
     outline: none;
   }
+}
+
+footer.footer {
+  padding-bottom: var(--safe-bottom);
 }
