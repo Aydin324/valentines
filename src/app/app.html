@@ -1,27 +1,38 @@
 <main class="container">
-  @if(proposalState()==='intro'){
-  <div class="fade-in-section">
-    <h1 class="typing-effect">Moram nešto da te pitam...</h1>
-    <button (click)="proceed()" class="btn-primary">Click to continue</button>
-  </div>
-  } @if(proposalState()==='proposal'){
-  <div class="question-section">
-    <h2>Hoćeš li mi biti date za Valentinovo? 🫠</h2>
-
-    <div class="btn-group">
-      <button (click)="proceed()" class="btn-yes">DA!</button>
-
-      <button (mouseenter)="moveNoButton()" (touchstart)="moveNoButton()" class="btn-no" id="no">
-        ne
-      </button>
+  @if (proposalState() === 'intro') {
+    <div class="fade-in-section">
+      <h1 class="typing-effect">Moram nešto da te pitam...</h1>
+      <button (click)="proceed()" class="btn-primary">Click to continue</button>
     </div>
-  </div>
-  } @if(proposalState()==='accepted'){
-  <div class="success-section bounce-in">
-    <h1>Jeeeeee! Vidimo see 😊</h1>
-    <p>Volim te!</p>
-  </div>
+  }
+  @if (proposalState() === 'proposal') {
+    <div class="question-section">
+      <h2>Hoćeš li mi biti date za Valentinovo? 🫠</h2>
+
+      <div class="btn-group">
+        <button (click)="proceed()" class="btn-yes">DA!</button>
+
+        <button
+          (mouseenter)="moveNoButton()"
+          (pointerdown)="handleNoButtonClick()"
+          class="btn-no"
+          id="no"
+        >
+          ne
+        </button>
+      </div>
+    </div>
+  }
+  @if (proposalState() === 'accepted') {
+    <div class="success-section bounce-in">
+      <h1>Jeeeeee! Vidimo see 😊</h1>
+      <p>Volim te!</p>
+    </div>
   }
 </main>
+
+<footer class="footer">
+  <p>Od Aydina ❤️</p>
+</footer>
 
 <!-- <router-outlet /> -->

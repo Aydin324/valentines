@@ -9,6 +9,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   proposalState = signal<'intro' | 'proposal' | 'accepted'>('intro');
+  noClicked: number = 0;
 
   proceed() {
     if (this.proposalState() === 'intro') {
@@ -55,5 +56,11 @@ export class App {
       noButton.style.left = `${x!}px`;
       noButton.style.top = `${y!}px`;
     }
+  }
+
+  handleNoButtonClick(): void {
+    this.noClicked++;
+    console.log('No button clicked', this.noClicked, 'times');
+    this.moveNoButton();
   }
 }
