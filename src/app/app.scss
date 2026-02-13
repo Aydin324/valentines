@@ -174,3 +174,14 @@ h1 {
     transform: translateY(0);
   }
 }
+
+img {
+  max-width: 80vw;
+  max-height: 40vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(255, 77, 109, 0.2);
+  margin-bottom: 2rem;
+  object-fit: cover;
+}
