@@ -53,6 +53,10 @@ button {
   position: relative;
 }
 
+.btn-primary {
+  animation: fadeIn 2s ease-in 3.5s both;
+}
+
 .btn-no {
   background-color: #adb5bd;
   color: white;
@@ -90,6 +94,13 @@ h1 {
     0 0 10px rgba(255, 255, 255, 0.05);
   margin-left: 8vw;
   margin-right: 8vw;
+}
+
+.shadowed {
+  color: #2b2d42fb;
+  text-shadow:
+    2px 2px 8px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.05);
 }
 
 .typing-effect {

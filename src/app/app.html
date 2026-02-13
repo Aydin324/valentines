@@ -2,7 +2,7 @@
   @if (proposalState() === 'intro') {
     <div class="fade-in-section">
       <h1 class="typing-effect">Moram nešto da te pitam...</h1>
-      <button (click)="proceed()" class="btn-primary">Click to continue</button>
+      <button (click)="proceed()" class="btn-primary">Pitaj</button>
     </div>
   }
   @if (proposalState() === 'proposal') {
@@ -26,7 +26,7 @@
   @if (proposalState() === 'accepted') {
     <div class="success-section screen-fade">
       <h1>Jeeeeee! Vidimo see 😊</h1>
-      <p>Volim te!</p>
+      <p class="shadowed">Volim te!</p>
     </div>
   }
 </main>
