@@ -14,7 +14,6 @@ export class App {
   yesButtonBlocked = signal(false);
 
   clearAnimation(event: AnimationEvent) {
-    // The 'target' is the element that just finished animating
     const element = event.target as HTMLElement;
     element.style.animation = 'none';
   }
@@ -27,7 +26,7 @@ export class App {
     } else if (this.proposalState() === 'proposal') {
       this.proposalState.set('accepted');
       if ('vibrate' in navigator) {
-        navigator.vibrate([100, 30, 100, 30, 100]);
+        navigator.vibrate([100, 100, 100, 70, 50, 50, 200]);
       }
       confetti({
         particleCount: 250,
@@ -35,6 +34,9 @@ export class App {
         origin: { y: 0.8 },
         colors: ['#ff4d6d', '#ff758f', '#ffb3c1'],
       });
+      if (this.noClicked > 0) {
+        this.changeFooterMessage();
+      }
     } else {
       this.proposalState.set('intro');
     }
@@ -99,5 +101,12 @@ export class App {
     this.noClicked++;
     console.log('No button clicked', this.noClicked, 'times');
     this.moveNoButton();
+  }
+
+  changeFooterMessage(): void {
+    const footer = document.querySelector('#footer');
+    if (footer) {
+      footer.innerHTML = `<p>Zašto si kliknula 'ne' ${this.noClicked} puta? 😢</p>`;
+    }
   }
 }
