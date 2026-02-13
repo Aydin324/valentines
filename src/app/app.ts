@@ -20,6 +20,9 @@ export class App {
       setTimeout(() => this.yesButtonBlocked.set(false), 500);
     } else if (this.proposalState() === 'proposal') {
       this.proposalState.set('accepted');
+      if ('vibrate' in navigator) {
+        navigator.vibrate([100, 30, 100, 30, 100]); 
+      }
       confetti({
         particleCount: 250,
         spread: 90,
