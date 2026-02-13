@@ -1,4 +1,4 @@
-import { Component, signal, effect } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import confetti from 'canvas-confetti';
 
@@ -13,24 +13,10 @@ export class App {
   noClicked: number = 0;
   yesButtonBlocked = signal(false);
 
-  constructor() {
-    // Watch for state changes and attach animation-end listeners to new .screen-fade elements
-    effect(() => {
-      this.proposalState(); // track state changes
-      // Schedule the listener attachment after Angular renders
-      setTimeout(() => {
-        const screenFadeElements = document.querySelectorAll('.screen-fade');
-        screenFadeElements.forEach((el) => {
-          // Only add listener if not already added (check for data attribute)
-          if (!(el as any).__animationListenerAdded) {
-            el.addEventListener('animationend', () => {
-              (el as HTMLElement).style.animation = 'none';
-            });
-            (el as any).__animationListenerAdded = true;
-          }
-        });
-      });
-    });
+  clearAnimation(event: AnimationEvent) {
+    // The 'target' is the element that just finished animating
+    const element = event.target as HTMLElement;
+    element.style.animation = 'none';
   }
 
   proceed() {

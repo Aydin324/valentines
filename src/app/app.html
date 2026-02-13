@@ -6,7 +6,7 @@
     </div>
   }
   @if (proposalState() === 'proposal') {
-    <div class="question-section screen-fade">
+    <div class="question-section screen-fade" (animationend)="clearAnimation($event)">
       <h2>Hoćeš li mi biti date za Valentinovo? 🫠</h2>
 
       <div class="btn-group">
