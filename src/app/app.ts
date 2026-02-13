@@ -21,7 +21,7 @@ export class App {
     } else if (this.proposalState() === 'proposal') {
       this.proposalState.set('accepted');
       if ('vibrate' in navigator) {
-        navigator.vibrate([100, 30, 100, 30, 100]); 
+        navigator.vibrate([100, 30, 100, 30, 100]);
       }
       confetti({
         particleCount: 250,
@@ -79,7 +79,9 @@ export class App {
         }
 
         attempts++;
+        console.log('Attempt', attempts);
       }
+      console.log(x!);
 
       noButton.style.position = 'fixed';
       noButton.style.left = `${x!}px`;
