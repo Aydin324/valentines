@@ -4,6 +4,15 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: 100dvh;
+
+  padding-bottom: env(safe-area-inset-bottom);
+
+  width: 100%;
+  overflow: hidden;
+  position: fixed; 
+  top: 0;
+  left: 0;
 }
 
 .container {
@@ -14,6 +23,7 @@
   background-color: #fff0f3;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   flex-direction: column;
+  height: 95dvh;
 }
 
 .btn-group {
@@ -103,10 +113,17 @@ button {
   }
 }
 
-.footer {
+#footer {
+  margin: auto;
   text-align: center;
   font-size: 0.8rem;
   color: #ff4d6d;
   opacity: 0.7;
   width: 100%;
+  flex-shrink: 0;
+  z-index: 10;
+
+  p {
+    margin: 0;
+  }
 }
