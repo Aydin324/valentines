@@ -106,7 +106,11 @@ export class App {
   changeFooterMessage(): void {
     const footer = document.querySelector('#footer');
     if (footer) {
-      footer.innerHTML = `<p>A što si kliknula 'ne' ${this.noClicked} puta? 😢</p>`;
+      if (this.noClicked === 1) {
+        footer.innerHTML = `<p>A što si kliknula 'ne' prvo 😢</p>`;
+      } else {
+        footer.innerHTML = `<p>A što si kliknula 'ne' ${this.noClicked} puta? 😢</p>`;
+      }
     }
   }
 }
